@@ -513,23 +513,109 @@ body {
 .copyright a:hover {
     text-decoration: underline; /* برای نمایش خط زیر هنگام hover */
 }
+/* استایل دکمه همبرگری */
+.nav-toggle {
+    display: none; /* در حالت دسکتاپ پنهان باشد */
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.hamburger {
+    display: block;
+    position: relative;
+    width: 25px;
+    height: 3px;
+    background: white;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 3px;
+    background: white;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.hamburger::before {
+    transform: translateY(-8px);
+}
+
+.hamburger::after {
+    transform: translateY(8px);
+}
+
+/* استایل برای حالت باز شده منو */
+.nav-open .hamburger {
+    transform: rotate(45deg);
+}
+
+.nav-open .hamburger::before {
+    transform: rotate(90deg) translate(-8px, 0px);
+}
+
+.nav-open .hamburger::after {
+    opacity: 0;
+}
+
+
 @media (max-width: 768px) {
-    .nav-menu {
-        display: none;
+    /* استایل‌های دکمه همبرگری و منوی موبایل */
+    .nav-toggle {
+        display: block; /* نمایش دکمه در موبایل */
+        z-index: 1001; /* بالاتر از سایر المان‌ها */
     }
 
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%; /* در ابتدا خارج از صفحه باشد */
+        width: 60%;
+        height: 100vh;
+        background: rgba(70, 82, 47, 0.95);
+        backdrop-filter: blur(10px);
+        display: flex; /* برای چیدمان عمودی آیتم‌ها */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.4s ease-in-out;
+        gap: 25px;
+    }
+
+    .nav-menu.active {
+        right: 0; /* با افزودن کلاس active نمایش داده شود */
+    }
+
+    .nav-item a {
+        font-size: 18px;
+    }
+
+    /* استایل‌های بخش Hero */
     .hero-container {
         grid-template-columns: 1fr;
         text-align: center;
+        padding-top: 40px; /* ایجاد فاصله از بالا */
     }
+
     .hero-image {
         flex-direction: column;
         align-items: center;
-    }
-    .hero-card {
-        width: 100%;
+        width: 100%; /* اطمینان از اینکه والد هم عرض کامل دارد */
+        gap: 0; /* حذف فاصله اضافی بین کارت‌ها در موبایل */
     }
 
+    .hero-card {
+        width: 90%; 
+        margin: 0 auto 20px auto; /* وسط‌چین کردن و ایجاد فاصله پایین */
+    }
+
+    /* استایل سایر بخش‌ها */
     .about-container {
         grid-template-columns: 1fr;
     }

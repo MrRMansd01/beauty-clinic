@@ -46,3 +46,20 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.scroll-animation').forEach(el => {
     observer.observe(el);
 });
+const navToggle = document.querySelector('.nav-toggle');
+const navMenu = document.querySelector('.nav-menu');
+
+navToggle.addEventListener('click', () => {
+    document.body.classList.toggle('nav-open');
+    navMenu.classList.toggle('active');
+});
+
+// بستن منو با کلیک روی هر آیتم
+document.querySelectorAll('.nav-item a').forEach(link => {
+    link.addEventListener('click', () => {
+        if (document.body.classList.contains('nav-open')) {
+            document.body.classList.remove('nav-open');
+            navMenu.classList.remove('active');
+        }
+    });
+});غ

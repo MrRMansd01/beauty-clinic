@@ -12,6 +12,9 @@
                 <div class="logo-icon">✨</div>
                 <span>کلینیک زیبایی ایروانی</span>
             </a>
+            <button class="nav-toggle" aria-label="toggle navigation">
+                <span class="hamburger"></span>
+            </button>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#home" class="active">خانه</a></li>
                 <li class="nav-item"><a href="#services">خدمات</a></li>
